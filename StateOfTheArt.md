@@ -60,4 +60,4 @@ which adds defenses against potential attack to NTRU by eliminating worrisome al
 
 
 # Resources and tools
-
+IntelliJ IDEA, FX Studio. 

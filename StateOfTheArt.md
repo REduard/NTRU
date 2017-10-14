@@ -50,6 +50,7 @@ which adds defenses against potential attack to NTRU by eliminating worrisome al
 * **An Introduction to Mathematical Cryptography** by Jeffrey Hoffstein, Jill Pipher, Joseph H. Silverman
 * **NTRU Cryptography: A Lattice-Based Cryptosystem** and Attacks against it by Kevin Brand
 * [Lectures on the NTRU encryption algorithm and digital signature](http://www.math.brown.edu/~jpipher/grenoble.pdf)
+* [NTRU software implementation for constrained devices](https://www.esat.kuleuven.be/cosic/publications/thesis-161.pdf)
 
 # Relevant links
 

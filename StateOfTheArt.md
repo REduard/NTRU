@@ -54,8 +54,8 @@ which adds defenses against potential attack to NTRU by eliminating worrisome al
 
 # Relevant links
 
-*[NTRU](https://en.wikipedia.org/wiki/NTRU)
-*[Public-key cryptography](https://en.wikipedia.org/wiki/Public-key_cryptography)
+* [NTRU](https://en.wikipedia.org/wiki/NTRU)
+* [Public-key cryptography](https://en.wikipedia.org/wiki/Public-key_cryptography)
 
 
 

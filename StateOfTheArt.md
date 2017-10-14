@@ -31,7 +31,7 @@ were threatened with legal action. It was not until 2011 that the first open-sou
 and in 2013, Security Innovation exempted open source projects from having to get a patent license, and released
 an NTRU reference implementation under the GPL v2.
 
-### Three open-source NTRU implementations now exist:
+### Three of the open-source NTRU implementations:
 
 * The GPL-licensed reference implementation
 * A BSD-licensed library

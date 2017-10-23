@@ -1,11 +1,14 @@
-TEAM MEMBERS:
+# Team Members and Contact Information:
 
--	Rascutoi Eduard - rascutoi.eduard@gmail.com
--	Voicu  Maria– 
--	Angel Mihail – 
--	Tanase Bianca – 
+| Name | E-mail |
+| ------ | ----------- |
+| Rascutoi Eduard |  rascutoi.eduard@gmail.com
+| Voicu  Maria |  
+| Anghel Mihail |  
+| Nicu Andrei |  
 
-PROFESOR COORDONATOR: Ferucio Laurentiu Tiplea
-PROJECT THEME: NTRU Cryptosystem
+**Coordinating teacher: Ferucio Laurentiu Tiplea**
 
-SEF DE ECHIPA: Rascutoi Eduard
+**Project Theme: NTRU Cryptosystem**
+
+**Team Leader: Rascutoi Eduard**

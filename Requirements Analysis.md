@@ -61,7 +61,7 @@ The user has established a connection and send a private message to the other us
 The user has established a connection, has finished communication with the other user and closes the connection
 	
 #### Steps
-1) User1 presses the close connection button.
+1) User1 presses the "close connection" button.
 2) User2 receives a warning with the message "The connection has been closed" and reason "The other user has closed the connection."
 
 

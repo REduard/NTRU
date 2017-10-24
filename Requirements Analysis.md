@@ -32,30 +32,33 @@ The user obtains the ip and port of the other user and establishes a connection 
 1) User2 give to user1 the ip and port at which he can establish a connection.
 2) User1 sets the ip and the port of the other user.
 3) User1 clicks the "establish connection" button.
-4) User2 recieves a connection request.
+3) User1 generate a pair of keys and sends a connection request to user2 along with his public key.
+4) User2 recieves a connection request and the public key of user1.
 5) User2 can accept or decline the connection.
-6) If user2 accepts the connection request then the connection is established
+6) If user2 accepts the connection request then he generates a pair of keys and sends to user1 the public key.
+7) User1 receives the public key from user2 and a message saying "Connection successfully established".
 
 ####  Extensions
 - The connection is not established succesfully because of the user2 declining the connection -> user1 recieves a warnning message "Failed to establish connection" with the reason "The other user refused the connection." 
 - The connection is not established succesfully because of a network problem -> user1 recieves a error message "Failed to establish connection" with the reason "An network error has occure, please check your internet connection"
 
-### The user send a message to the other user
+### The user sends a message to the other user
 
 #### Objective/Context
-The user has established a connection and send a private message to the other user
+The user has established a connection and sends a private message to the other user
 	
 #### Steps
 1) User1 types the message he want to send to user2.
 2) User1 presses the "send" button.
-3) User2 receives the message.
+3) The message is ecrypted using the public key received when the connection was established and is sent to user2. 
+3) User2 receives the message and decrypts it using his private key.
 4) User1 receives a confirmation of message delivery.
 
 	
 ####  Extensions
 - The message is not sent due to a connection problem user1 recieves a warnning message "Failed to send message" with the reason "An network error has occure while sending the message. Please check your internet connection and try again."
 
-### The user end the connection
+### The user ends the connection
 
 #### Objective/Context
 The user has established a connection, has finished communication with the other user and closes the connection

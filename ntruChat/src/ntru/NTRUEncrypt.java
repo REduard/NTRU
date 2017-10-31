@@ -17,11 +17,7 @@ public class NTRUEncrypt {
 	
 	public Bmessage message;
 	
-	private NTRUEncrypt () 
-	{
-		String m = "1"; //dat ca param prin constructor; introdus aici doar ptr a compila programul fara erori;
-		message = new MessageProxy(m);
-	}
+	private NTRUEncrypt () {}
 	
 	public static NTRUEncrypt getInstance() 
 	{
@@ -30,18 +26,6 @@ public class NTRUEncrypt {
 	         instance = new NTRUEncrypt();
 	      }
 	      return instance;
-	}
-	
-	public void TEST2 ()
-	{
-		System.out.println(N);
-	}
-	
-	public void TEST ()
-	{
-		System.out.println("NTRUEncrypt done!");
-		N = 3;
-		System.out.println(N);
 	}
 	
 	public String Encrypt ()

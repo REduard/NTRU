@@ -13,11 +13,21 @@ public class NTRUDecrypt {
 	private Polynomial b;
 	private Polynomial e;
 	private Polynomial c;
-	
+
+	private static NTRUDecrypt instance = null;
+
 	public String Decrypt ()
 	{
 		return null;
 	}
-	
+
+	public static NTRUDecrypt getInstance()
+	{
+		if(instance == null)
+		{
+			instance = new NTRUDecrypt();
+		}
+		return instance;
+	}
 
 }

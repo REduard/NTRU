@@ -7,25 +7,37 @@ import ntru.CryptoSystem;
  */
 public class Messenger {
     private CryptoSystem cryptoSystem;
+    private ConnectionManager connectionManager;
 
     public void sendMessage(String s) {
         throw new UnsupportedOperationException();
     }
 
-    public void establishConnection(){
+    public void establishConnection() {
         throw new UnsupportedOperationException();
     }
 
-    public void onMessageRecieved(){
+    public void onMessageRecieved() {
         throw new UnsupportedOperationException();
     }
-    public void generateKeys(){
+
+    public void generateKeys() {
         throw new UnsupportedOperationException();
     }
-    public void closeConnection(){
+
+    public void closeConnection() {
         throw new UnsupportedOperationException();
     }
-    public void displayError(){
+
+    public void displayError() {
         throw new UnsupportedOperationException();
+    }
+
+    public CryptoSystem getCryptoSystem() {
+        return cryptoSystem;
+    }
+
+    public ConnectionManager getConnectionManager() {
+        return connectionManager;
     }
 }

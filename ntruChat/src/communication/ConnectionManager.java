@@ -4,10 +4,11 @@ package communication;
  * Created by R.Eduard on 31.10.2017.
  */
 public class ConnectionManager extends RuntimeException {
-    public Integer senderIpAddress;
-    public Integer senderPort;
-    public Integer receiverIpAddress;
-    public Integer receiverPort;
+    private Integer senderIpAddress;
+    private Integer senderPort;
+    private Integer receiverIpAddress;
+    private Integer receiverPort;
+    private Connection connection;
 
     public ConnectionManager() {
     }
@@ -23,5 +24,9 @@ public class ConnectionManager extends RuntimeException {
     public void closeConnection() {
         throw new UnsupportedOperationException();
         return null;
+    }
+
+    public Connection getConnection() {
+        return connection;
     }
 }

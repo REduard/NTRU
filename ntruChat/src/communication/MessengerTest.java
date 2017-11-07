@@ -15,7 +15,7 @@ public class MessengerTest {
     @Test
     public void testEstablishConnection() {
         Messenger messenger = new Messenger();
-        messenger.establishConnection();
+        messenger.establishConnection("86.134.176.128","80");
         assertNotNull(messenger.getConnectionManager().getConnection());
     }
 

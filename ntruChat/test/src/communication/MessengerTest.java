@@ -19,4 +19,10 @@ public class MessengerTest {
         assertNotNull(messenger.getConnectionManager().getConnection());
     }
 
+    @Test
+    public void testCloseConnection() {
+        Messenger messenger = new Messenger();
+        messenger.closeConnection();
+        assertNull(messenger.getConnectionManager().getConnection());
+    }
 }

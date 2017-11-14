@@ -16,6 +16,7 @@
     <bean id="main" class="Main"/>
     <bean id="menu" class="userInterface.Menu"/>
     <bean id="ntruCryptosystem" class="ntru.NTRUCryptosystem"/>
+    <bean id="polynomial" class="ntru.Polynomial"/>
 
     <context:annotation-config />
 </beans>

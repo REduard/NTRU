@@ -1,4 +1,5 @@
 import ntru.CryptoSystem;
+import ntru.Polynomial;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
@@ -13,6 +14,8 @@ public class Main {
     @Autowired
     @Qualifier("ntruCryptosystem")
     private CryptoSystem ntruCryptosystem;
+    @Autowired
+    private Polynomial polynomial;
 
     public static void main(String[] args) {
         ApplicationContext ctx=new FileSystemXmlApplicationContext("src/main/java/spring.xml");
@@ -22,5 +25,6 @@ public class Main {
     private void testLogging(){
         ntruCryptosystem.encrypt("plaintext");
         ntruCryptosystem.decrypt("encrypted text", "v$N4oQF6VH");
+        polynomial.MultiplyPolynomial(new Polynomial());
     }
 }

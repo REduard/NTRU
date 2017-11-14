@@ -31,10 +31,10 @@ public class LoggingAspect {
         System.out.println();
         System.out.println("INFO: Decryption complete.");
     }
-    @After("execution( public void MultiplyPolynomial (..))")
+    @Before("execution( public void MultiplyPolynomial (..))")
     public void LoggingAdviceBeforeMultiplyPolynomial(){
-        System.out.println();
         System.out.println("INFO: Calling multiply operation...");
+        System.out.println();
     }
     @After("execution( public void MultiplyPolynomial(..))")
     public void LoggingAdviceAfterMultiplyPolynomial(){

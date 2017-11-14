@@ -1,8 +1,10 @@
 package ntru;
 
+import org.springframework.stereotype.Component;
+
 import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
-
+@Component(value="polynomial")
 public class Polynomial
 {
 
@@ -84,7 +86,7 @@ public class Polynomial
 
 	public void MultiplyPolynomial (Polynomial B)
 	{
-
+		System.out.println("Multiplying... ");
 	}
 
 	public void MultiplyPolynomialConst (Integer c)

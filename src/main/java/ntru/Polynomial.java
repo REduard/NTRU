@@ -1,4 +1,4 @@
-package NTRUpak;
+package ntru;
 
 import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;

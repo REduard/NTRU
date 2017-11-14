@@ -1,10 +1,8 @@
-package test;
+package ntru;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
-
-import NTRUpak.Polynomial;
 
 public class PolynomialTest {
 

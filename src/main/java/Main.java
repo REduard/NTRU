@@ -1,8 +1,9 @@
+import ntru.CryptoSystem;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 import org.springframework.stereotype.Component;
-import userInterface.Menu;
 
 /**
  * Created by R.Eduard on 14.11.2017.
@@ -10,7 +11,8 @@ import userInterface.Menu;
 @Component
 public class Main {
     @Autowired
-    private Menu menu;
+    @Qualifier("ntruCryptosystem")
+    private CryptoSystem ntruCryptosystem;
 
     public static void main(String[] args) {
         ApplicationContext ctx=new FileSystemXmlApplicationContext("src/main/java/spring.xml");
@@ -18,6 +20,7 @@ public class Main {
         main.display();
     }
     private void display(){
-        menu.option1();
+        ntruCryptosystem.encrypt("plaintext");
+        ntruCryptosystem.decrypt("encrypted text", "v$N4oQF6VH");
     }
 }

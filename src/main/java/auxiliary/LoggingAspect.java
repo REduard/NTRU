@@ -1,5 +1,6 @@
 package auxiliary;
 
+import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 
@@ -8,8 +9,25 @@ import org.aspectj.lang.annotation.Before;
  */
 @Aspect
 public class LoggingAspect {
-    @Before("execution(public void option1())")
-    public void LoggingAdvice(){
-        System.out.println("Method started");
+    @Before("execution(public String encrypt(..))")
+    public void LoggingAdviceBeforeEncryption(){
+        System.out.println("INFO: Encrypting message...");
+        System.out.println();
+    }
+    @After("execution(public String encrypt (..))")
+    public void LoggingAdviceAfterEncryption(){
+        System.out.println();
+        System.out.println("INFO: Encrypting complete.");
+    }
+
+    @Before("execution(public String decrypt(..))")
+    public void LoggingAdviceBeforeDecryption(){
+        System.out.println("INFO: Decrypting message...");
+        System.out.println();
+    }
+    @After("execution( public String decrypt(..))")
+    public void LoggingAdviceAfterDecryption(){
+        System.out.println();
+        System.out.println("INFO: Decryption complete.");
     }
 }

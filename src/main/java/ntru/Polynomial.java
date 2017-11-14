@@ -2,6 +2,8 @@ package ntru;
 
 import org.springframework.stereotype.Component;
 
+import NTRUpak.Polynomial;
+
 import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 @Component(value="polynomial")
@@ -21,11 +23,13 @@ public class Polynomial
 		this.N = n;
 	}
 
-	public ArrayList<Integer> getCoef() {
+	public ArrayList<Integer> getCoef() 
+	{
 		return coef;
 	}
 
-	public void setCoef(ArrayList<Integer> coef) {
+	public void setCoef(ArrayList<Integer> coef) 
+	{
 		this.coef = coef;
 	}
 
@@ -56,8 +60,8 @@ public class Polynomial
 
 	public void AddPolynomial (Polynomial B)
 	{
-		int i, sum = 0, minP = (this.N < B.N) ? this.N : B.N, maxP = (this.N > B.N) ? this.N : B.N;
-
+		int i, sum = 0;
+		
 		if ( this.N > B.N)
 		{
 			for ( i = 0; i < B.N; i++)
@@ -73,12 +77,12 @@ public class Polynomial
 				sum = this.coef.get(i) + B.coef.get(i);
 				this.coef.set(i, sum);
 			}
-
+			
 			for ( i = this.N; i<B.N;i++)
 			{
 				this.coef.add(B.getCoef().get(i));
 			}
-
+			
 			this.N = B.N;
 		}
 
@@ -86,7 +90,30 @@ public class Polynomial
 
 	public void MultiplyPolynomial (Polynomial B)
 	{
-		System.out.println("Multiplying... ");
+		int newMaxDegree, maxP = (this.N > B.N) ? this.N : B.N, minP = (this.N < B.N) ? this.N : B.N;
+		
+		newMaxDegree = this.N + B.N;
+		
+		Polynomial result = new Polynomial(newMaxDegree - 1);
+				
+		int position=0;
+		
+		for ( int i = 0; i < minP; i++)
+		{
+			for (int j = 0; j < maxP; j++)
+			{
+				result.getCoef().set(j + position, result.getCoef().get(j + position) + this.coef.get(i)*B.getCoef().get(j));
+			}
+			position++;
+		}
+		
+		//result.PrintPolynomial();
+		
+		this.coef.clear();
+		this.N = result.N;
+		
+		for ( int i = 0; i < result.N; i++)
+			this.coef.add(result.getCoef().get(i));
 	}
 
 	public void MultiplyPolynomialConst (Integer c)
@@ -186,6 +213,21 @@ public class Polynomial
 		}
 	}
 
+	public void PrintPolynomial()
+	{
+		for (int i = 0; i < N; i++)
+		{
+			if (i != N - 1 )
+			{
+				System.out.print(this.coef.get(i) + "*x^" + i);
+				System.out.print(" + ");
+			}
+			else
+				System.out.print(this.coef.get(i) + "*x^" + i);			
+		}
+		System.out.println();
+	}
+	
 	public void FindPolynomialInverse()
 	{
 

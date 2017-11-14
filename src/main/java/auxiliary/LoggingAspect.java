@@ -9,6 +9,7 @@ import org.aspectj.lang.annotation.Before;
  */
 @Aspect
 public class LoggingAspect {
+
     @Before("execution(public String encrypt(..))")
     public void LoggingAdviceBeforeEncryption(){
         System.out.println("INFO: Encrypting message...");
@@ -29,5 +30,15 @@ public class LoggingAspect {
     public void LoggingAdviceAfterDecryption(){
         System.out.println();
         System.out.println("INFO: Decryption complete.");
+    }
+    @After("execution( public void MultiplyPolynomial (..))")
+    public void LoggingAdviceBeforeMultiplyPolynomial(){
+        System.out.println();
+        System.out.println("INFO: Calling multiply operation...");
+    }
+    @After("execution( public void MultiplyPolynomial(..))")
+    public void LoggingAdviceAfterMultiplyPolynomial(){
+        System.out.println();
+        System.out.println("INFO: Multiply operation done.");
     }
 }

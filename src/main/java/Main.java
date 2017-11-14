@@ -17,9 +17,9 @@ public class Main {
     public static void main(String[] args) {
         ApplicationContext ctx=new FileSystemXmlApplicationContext("src/main/java/spring.xml");
         Main main= (Main) ctx.getBean("main");
-        main.display();
+        main.testLogging();
     }
-    private void display(){
+    private void testLogging(){
         ntruCryptosystem.encrypt("plaintext");
         ntruCryptosystem.decrypt("encrypted text", "v$N4oQF6VH");
     }

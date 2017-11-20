@@ -2,8 +2,6 @@ package ntru;
 
 import org.springframework.stereotype.Component;
 
-import NTRUpak.Polynomial;
-
 import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 @Component(value="polynomial")

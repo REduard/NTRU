@@ -25,6 +25,6 @@ public class Main {
     private void testLogging(){
         ntruCryptosystem.encrypt("plaintext");
         ntruCryptosystem.decrypt("encrypted text", "v$N4oQF6VH");
-        polynomial.MultiplyPolynomial(new Polynomial());
+//        polynomial.MultiplyPolynomial(new Polynomial());
     }
 }

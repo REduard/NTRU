@@ -1,7 +1,5 @@
 package ntru;
 
-import NTRUpak.Polynomial;
-
 public class Main {
 
     public static void main(String[] args)

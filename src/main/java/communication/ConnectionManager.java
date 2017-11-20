@@ -1,35 +1,80 @@
 package communication;
 
-import java.sql.Connection;
+import auxiliary.ConnectionNode;
+import org.springframework.stereotype.Component;
+
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.net.ServerSocket;
+import java.net.Socket;
 
 /**
  * Created by R.Eduard on 31.10.2017.
  */
-//@Component
+@Component("connectionManager")
 public class ConnectionManager {
-    private Integer senderIpAddress;
-    private Integer senderPort;
-    private Integer receiverIpAddress;
-    private Integer receiverPort;
-    private Connection connection;
+    private ConnectionNode connectionNodeSender;
+    private ConnectionNode connectionNodeReceiver;
+    private Thread listenThread;
+    private Socket client;
 
-    public ConnectionManager(Integer senderIpAddress, Integer senderPort) {
+    public void openConnection(ConnectionNode connectionNodeSender, ConnectionNode connectionNodeReceiver) {
+        this.connectionNodeSender = connectionNodeSender;
+        this.connectionNodeReceiver = connectionNodeReceiver;
+
+        listenThread = new Thread(() -> {
+            try (ServerSocket serverSocket = new ServerSocket(connectionNodeSender.getPort())) {
+                System.out.println("Waiting for client on port " +
+                        serverSocket.getLocalPort() + "...");
+
+                    Socket server = serverSocket.accept();
+
+                    System.out.println("Just connected to " + server.getRemoteSocketAddress());
+                    DataInputStream in = new DataInputStream(server.getInputStream());
+                    while (true) {
+                    System.out.println(in.readUTF());
+
+//                    DataOutputStream out = new DataOutputStream(server.getOutputStream());
+//                    out.writeUTF("Thank you for connecting to " + server.getLocalSocketAddress()
+//                            + "\nGoodbye!");
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+        listenThread.start();
     }
 
-    public Connection openConnection(Integer senderIpAddress, Integer senderPort) {
-        throw new UnsupportedOperationException();
-//        return null;
-    }
+    public void sendMessage(String message) {
+        DataOutputStream out = null;
 
-    public void sendMessage(String s) {
-        throw new UnsupportedOperationException();
+        if (client != null) {
+
+            try {
+                out = new DataOutputStream(client.getOutputStream());
+                out.writeUTF(message);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        } else {
+            try {
+                this.client = new Socket(connectionNodeReceiver.getIpAddress(), connectionNodeReceiver.getPort());
+                out = new DataOutputStream(client.getOutputStream());
+                out.writeUTF(message);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     public void closeConnection() {
-        throw new UnsupportedOperationException();
+        listenThread.interrupt();
     }
 
-    public Connection getConnection() {
-        return connection;
-    }
+//    public Connection getConnection() {
+//        return connection;
+//    }
 }

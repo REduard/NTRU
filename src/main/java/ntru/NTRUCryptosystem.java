@@ -5,8 +5,8 @@ import org.springframework.stereotype.Component;
 /**
  * Created by R.Eduard on 31.10.2017.
  */
-@Component(value="ntruCryptosystem")
-public class NTRUCryptosystem implements CryptoSystem {
+@Component(value = "ntruCryptosystem")
+public class NTRUCryptosystem implements PublicKeyCryptoSystem {
     private NTRUEncrypt ntruEncrypt;
     private NTRUDecrypt ntruDecrypt;
 
@@ -16,14 +16,19 @@ public class NTRUCryptosystem implements CryptoSystem {
     }
 
     @Override
-    public String encrypt(String plainText) {
+    public String encrypt(String plainText, String publicKey) {
         System.out.println(plainText);
-       return ntruEncrypt.Encrypt();
+        return ntruEncrypt.Encrypt();
     }
 
     @Override
-    public String decrypt(String plainText, String publicKey) {
+    public String decrypt(String plainText) {
         System.out.println(plainText);
         return ntruDecrypt.Decrypt();
+    }
+
+    @Override
+    public String getPublicKey() {
+        return null;
     }
 }

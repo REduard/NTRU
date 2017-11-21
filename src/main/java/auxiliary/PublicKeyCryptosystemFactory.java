@@ -1,17 +1,17 @@
 package auxiliary;
 
-import auxiliary.otherCryptosystems.RSACryptosystem;
 import ntru.NTRUCryptosystem;
+import ntru.PublicKeyCryptoSystem;
 
 /**
  * Created by R.Eduard on 31.10.2017.
  */
 public class PublicKeyCryptosystemFactory {
-    static NTRUCryptosystem createNTRUCryptosystem() {
+    public PublicKeyCryptoSystem createNTRUCryptosystem() {
         return new NTRUCryptosystem();
     }
 
-    static RSACryptosystem createAESCryptosystem() {
+    public PublicKeyCryptoSystem createAESCryptosystem() {
         return null;
     }
 }

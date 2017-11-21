@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -17,31 +16,32 @@ import java.net.Socket;
 @Component("connectionManager")
 @Scope("prototype")
 public class ConnectionManager {
-//    private ConnectionNode connectionNodeSender;
     private ConnectionNode connectionNodeReceiver;
     private Thread listenThread;
     private Socket client;
+    private String publicKey;
+    private String receiverPublicKey;
 
-    public ConnectionManager(){}
+    public ConnectionManager() {
+    }
 
-    public void openConnection(ConnectionNode connectionNodeSender, ConnectionNode connectionNodeReceiver) {
-//        this.connectionNodeSender = connectionNodeSender;
+    public void openConnection(ConnectionNode connectionNodeSender, ConnectionNode connectionNodeReceiver, String publicKey) {
         this.connectionNodeReceiver = connectionNodeReceiver;
+        this.publicKey = publicKey;
 
         listenThread = new Thread(() -> {
             try (ServerSocket serverSocket = new ServerSocket(connectionNodeSender.getPort())) {
                 System.out.println("Waiting for client on port " +
                         serverSocket.getLocalPort() + "...");
 
-                    Socket server = serverSocket.accept();
+                Socket server = serverSocket.accept();
 
-//                    System.out.println("Just connected to " + server.getRemoteSocketAddress());
-                    DataInputStream in = new DataInputStream(server.getInputStream());
-                    while (true) {
+                DataInputStream in = new DataInputStream(server.getInputStream());
+                DataOutputStream out = new DataOutputStream(server.getOutputStream());
+                out.writeUTF(publicKey);
+                while (true) {
                     //read
                     System.out.println(in.readUTF());
-
-                    DataOutputStream out = new DataOutputStream(server.getOutputStream());
                     out.writeUTF("Message received");
                 }
             } catch (IOException e) {
@@ -52,7 +52,7 @@ public class ConnectionManager {
     }
 
     public void sendMessage(String message) {
-        DataOutputStream out = null;
+        DataOutputStream out;
         DataInputStream in;
         if (client != null) {
 
@@ -78,11 +78,21 @@ public class ConnectionManager {
         }
     }
 
+    public String retrievePublicKey() {
+        DataOutputStream out;
+        DataInputStream in;
+        try {
+            this.client = new Socket(connectionNodeReceiver.getIpAddress(), connectionNodeReceiver.getPort());
+            in = new DataInputStream(client.getInputStream());
+            return in.readUTF();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public void closeConnection() {
         listenThread.interrupt();
     }
 
-//    public Connection getConnection() {
-//        return connection;
-//    }
 }

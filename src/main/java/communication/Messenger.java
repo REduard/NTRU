@@ -1,6 +1,9 @@
 package communication;
 
-import ntru.CryptoSystem;
+import auxiliary.ConnectionNode;
+import auxiliary.CryptoSystemFactory;
+import communication.exceptions.PublicKeyNotFoundException;
+import ntru.PublicKeyCryptoSystem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -10,39 +13,33 @@ import org.springframework.stereotype.Component;
 @Component
 public class Messenger {
     @Autowired
-    private CryptoSystem cryptoSystem;
+    private CryptoSystemFactory cryptoSystemFactory;
     @Autowired
     private ConnectionManager connectionManager;
+    private PublicKeyCryptoSystem publicKeyCryptoSystem;
+    private String reveivedPublicKey;
 
-    public void sendMessage(String s) {
-        throw new UnsupportedOperationException();
+    public Messenger() {
+        publicKeyCryptoSystem = cryptoSystemFactory.getPublicKeyCryptoSystemFactory().createNTRUCryptosystem();
+
     }
 
-    public void establishConnection() {
-        throw new UnsupportedOperationException();
+    public void establishConnection(ConnectionNode connectionNodeSender, ConnectionNode connectionNodeReceiver) {
+        connectionManager.openConnection(connectionNodeSender, connectionNodeReceiver, publicKeyCryptoSystem.getPublicKey());
+        reveivedPublicKey = connectionManager.retrievePublicKey();
     }
 
-    public void onMessageRecieved() {
-        throw new UnsupportedOperationException();
-    }
-
-    public void generateKeys() {
-        throw new UnsupportedOperationException();
+    public void sendMessage(String message) {
+        if (reveivedPublicKey != null) {
+            String encryptedMessage = publicKeyCryptoSystem.encrypt(message, reveivedPublicKey);
+            connectionManager.sendMessage(encryptedMessage);
+        } else {
+            throw new PublicKeyNotFoundException();
+        }
     }
 
     public void closeConnection() {
-        throw new UnsupportedOperationException();
+        connectionManager.closeConnection();
     }
 
-    public void displayError() {
-        throw new UnsupportedOperationException();
-    }
-
-    public CryptoSystem getCryptoSystem() {
-        return cryptoSystem;
-    }
-
-    public ConnectionManager getConnectionManager() {
-        return connectionManager;
-    }
 }

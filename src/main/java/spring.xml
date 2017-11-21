@@ -13,11 +13,11 @@
     <aop:aspectj-autoproxy />
 
     <bean name="loggingAspect" class="auxiliary.LoggingAspect"/>
-    <bean id="main" class="Main"/>
-    <bean id="menu" class="userInterface.Menu"/>
-    <bean id="ntruCryptosystem" class="ntru.NTRUCryptosystem"/>
-    <bean id="polynomial" class="ntru.Polynomial"/>
-    <bean id="connectionManager" class="communication.ConnectionManager" scope="prototype"/>
 
     <context:annotation-config />
+
+    <context:component-scan base-package="communication" />
+    <context:component-scan base-package="ntru" />
+    <context:component-scan base-package="auxiliary" />
+    <context:component-scan base-package="userInterface" />
 </beans>

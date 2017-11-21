@@ -2,6 +2,7 @@ package userInterface;
 
 import auxiliary.ConnectionNode;
 import communication.ConnectionManager;
+import communication.Messenger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -17,7 +18,7 @@ import java.util.Scanner;
 public class Menu {
 
     @Autowired
-    private ConnectionManager connnectionManager;
+    private Messenger messenger;
 
     public Menu() {
 
@@ -59,7 +60,7 @@ public class Menu {
         System.out.println("Write message");
         try (Scanner s = new Scanner(System.in)) {
             String message=s.nextLine();
-            connnectionManager.sendMessage(message);
+            messenger.sendMessage(message);
         }
     }
 

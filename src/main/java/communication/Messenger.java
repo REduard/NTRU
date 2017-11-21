@@ -1,12 +1,17 @@
 package communication;
 
 import ntru.CryptoSystem;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
  * Created by R.Eduard on 31.10.2017.
  */
+@Component
 public class Messenger {
+    @Autowired
     private CryptoSystem cryptoSystem;
+    @Autowired
     private ConnectionManager connectionManager;
 
     public void sendMessage(String s) {

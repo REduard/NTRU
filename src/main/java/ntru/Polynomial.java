@@ -3,6 +3,7 @@ package ntru;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.concurrent.ThreadLocalRandom;
 @Component(value="polynomial")
 public class Polynomial
@@ -181,7 +182,7 @@ public class Polynomial
 
 	}
 
-	public void GenerateRandomTernaryPolynomial (Integer N)
+	public void GenerateRandomTernaryPolynomial (Integer N) //genereaza polinom cu coef -1, 0, 1
 	{
 		int randomNum;
 
@@ -224,7 +225,82 @@ public class Polynomial
 			}
 		}
 	}
+	
+	public void GenerateRandomTernaryPolynomialEqual (Integer N)  //genereaza polinom cu coef -1, 0, 1 cu nr egal de coeficienti -1 si 1.
+	{
+		int randomNum;
+		
+		int nr1, nrM1, nr0;
+		
+		if ( N%2 == 0)
+		{
+			nr1 = ThreadLocalRandom.current().nextInt(1, N/2);
+			nrM1 = nr1;
+			nr0 = N - nr1 - nrM1;
+		}
+		
+		else 
+		{
+			nr1 = ThreadLocalRandom.current().nextInt(1, N/2 + 1);
+			nrM1 = nr1;
+			nr0 = N - nr1 - nrM1;
+		}
+		
+		/*
+		System.out.print(nrM1); 		System.out.print(nr0); 		System.out.print(nr1);
+		System.out.println();
+		*/
+		
+		ArrayList<Integer> result = new ArrayList<Integer>();
+		result.clear();
+				
+		this.N = N;
+		this.coef.clear();
+		
+		randomNum = ThreadLocalRandom.current().nextInt(-1, 2);
+		while (randomNum == 0)
+			randomNum = ThreadLocalRandom.current().nextInt(-1, 2);
 
+		if (randomNum == -1)
+			nrM1 -= 1;
+		else if (randomNum == 1)
+			nr1 -= 1;
+
+		result.add(randomNum);
+		
+		for (int i = N-2; i>=0;i--)
+		{
+			if (nr1 != 0 && nr1 >=1)
+			{
+				nr1--;
+				result.add(1);
+			}
+			else if ( nrM1 != 0 && nrM1 >=1)
+			{
+				nrM1--;
+				result.add(-1);
+			}
+			else
+			{
+				nr0--;
+				result.add(0);
+			}
+		}
+		
+		Collections.shuffle(result);
+		
+		while (result.get(0) == 0)
+			Collections.shuffle(result);
+		
+		Collections.reverse(result);
+		
+		for (int i = 0; i < result.size(); i++)
+		{
+			this.coef.add(result.get(i));
+		}
+		
+	}
+	
 	public void PrintPolynomial()
 	{
 		for (int i = 0; i < N; i++)

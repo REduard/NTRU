@@ -1,7 +1,9 @@
 package ntru;
 
+import java.io.UnsupportedEncodingException;
+
 public interface Bmessage 
 {
-	void ConvertToBinary();
-	void ConvertFromBinary();
+	String ConvertToBinary(String message) throws UnsupportedEncodingException;
+	String ConvertFromBinary(String message) throws UnsupportedEncodingException;
 }

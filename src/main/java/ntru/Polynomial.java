@@ -46,14 +46,28 @@ public class Polynomial
 			this.coef.add(0);
 	}
 
-	public void ConvertFromMessage (String message)
+	public void ConvertFromMessage (String message)   //conversie binara
 	{
-
+		this.N = message.length(); 
+		this.coef.clear();
+		
+		int c;
+		
+		for (int i = 0; i < this.N; i++)
+		{
+			c = Integer.parseInt(Character.toString(message.charAt(i)));
+			this.coef.add(c);
+		}
 	}
 
 	public String ConvertToMessage()
 	{
-		return null;
+		String result = "";
+		
+		for (int i = 0; i<this.N;i++)
+			result += this.coef.get(i).toString();
+		
+		return result;	
 	}
 
 	public void AddPolynomial (Polynomial B)

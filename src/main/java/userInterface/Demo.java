@@ -31,6 +31,8 @@ public class Demo {
         ApplicationContext ctx = new FileSystemXmlApplicationContext("src/main/java/spring.xml");
         Demo demo = (Demo) ctx.getBean("demo");
 //        main.menu.start();
+        demo.connnectionManager.openConnection(new ConnectionNode("localhost", 64713), new ConnectionNode("localhost", 64714));
+//        demo.connnectionManager.openConnection(new ConnectionNode("localhost", 64714), new ConnectionNode("localhost", 64713));
         try (Scanner scanner = new Scanner(System.in)) {
             while (true) {
                 String msg= scanner.nextLine();

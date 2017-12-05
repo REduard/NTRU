@@ -1,16 +1,17 @@
 package communication;
 
-import static org.junit.Assert.*;
-
+import auxiliary.ConnectionNode;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class ConnectionMessengerTest {
-
+@Autowired
+    private ConnectionManager connectionManager;
     @Test
     public void testOpenConnection() {
-//        ConnectionManager connectionManager = new ConnectionManager();
-//        connectionManager.openConnection("86.134.176.128","80");
-//        assertNotNull(connectionManager.getConnection());
+        connectionManager.openConnection(new ConnectionNode("localhost", 64713), new ConnectionNode("localhost", 64714),"0NSrV9Xa0bD4BVJZ");
+
+
     }
 
     @Test

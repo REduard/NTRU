@@ -1,9 +1,10 @@
 package ntru;
 
+import java.io.UnsupportedEncodingException;
+
 public class Main {
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) throws UnsupportedEncodingException {
 
     	//NTRUEncrypt A = new NTRUEncrypt();
     	//NTRUDecrypt B = new NTRUDecrypt();

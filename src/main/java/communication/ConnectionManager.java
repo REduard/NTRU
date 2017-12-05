@@ -14,7 +14,7 @@ import java.net.Socket;
  * Created by R.Eduard on 31.10.2017.
  */
 @Component("connectionManager")
-@Scope("prototype")
+//@Scope("prototype")
 public class ConnectionManager {
     private ConnectionNode connectionNodeReceiver;
     private Thread listenThread;

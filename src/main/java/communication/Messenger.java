@@ -20,7 +20,7 @@ public class Messenger {
     private String reveivedPublicKey;
 
     public Messenger() {
-        publicKeyCryptoSystem = cryptoSystemFactory.getPublicKeyCryptoSystemFactory().createNTRUCryptosystem();
+//        publicKeyCryptoSystem = cryptoSystemFactory.getPublicKeyCryptoSystemFactory().createNTRUCryptosystem();
 
     }
 

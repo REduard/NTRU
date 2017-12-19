@@ -5,6 +5,8 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 @Component(value="polynomial")
 public class Polynomial
 {
@@ -316,8 +318,18 @@ public class Polynomial
 		System.out.println();
 	}
 	
-	public void FindPolynomialInverse()
+	public Polynomial FindPolynomialInverse(int m)
 	{
-
+            
+            return null;
 	}
+        
+        public Polynomial getClone(){
+            try {
+                return (Polynomial) this.clone();
+            } catch (CloneNotSupportedException ex) {
+                Logger.getLogger(Polynomial.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            return null;
+        }
 }

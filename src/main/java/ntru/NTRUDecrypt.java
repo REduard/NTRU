@@ -6,9 +6,28 @@ public class NTRUDecrypt {
 	
 	private static NTRUDecrypt instance = null;
 
-	public String Decrypt ()
+	public String Decrypt (Polynomial encriptedMessage)
 	{
-		return null;
+		Polynomial a = encriptedMessage.getClone();
+		a.MultiplyPolynomial(this.keyPair.getPrivateKey().getF());
+
+		//TODO: IMPORTANT! set coefficients for a in the interval [-q/2, q/2]
+
+        a.ModuloPolynomialConst(keyPair.getPublicKey().getP());
+
+        a.MultiplyPolynomial(this.keyPair.getPrivateKey().getFp());
+
+        a.ModuloPolynomialConst(this.keyPair.getPublicKey().getP());
+
+		return a.ConvertToMessage();
+	}
+
+	public void setKeyPair(NTRUKeyPair keyPair){
+		this.keyPair = keyPair;
+	}
+
+	public NTRUKeyPair getKeyPair(){
+		return this.keyPair;
 	}
 
 	public static NTRUDecrypt getInstance()

@@ -2,8 +2,6 @@ package ntru;
 
 import org.springframework.stereotype.Component;
 
-import java.io.UnsupportedEncodingException;
-
 /**
  * Created by R.Eduard on 31.10.2017.
  */
@@ -26,7 +24,7 @@ public class NTRUCryptosystem implements PublicKeyCryptoSystem {
     @Override
     public String decrypt(String plainText) {
         System.out.println(plainText);
-        return ntruDecrypt.Decrypt();
+        return "";//ntruDecrypt.Decrypt();
     }
 
     @Override

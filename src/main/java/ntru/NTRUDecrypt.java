@@ -12,6 +12,7 @@ public class NTRUDecrypt {
 		a.MultiplyPolynomial(this.keyPair.getPrivateKey().getF());
 
 		//TODO: IMPORTANT! set coefficients for a in the interval [-q/2, q/2]
+		a.setCoef(Polynomial.generateCoef(keyPair.getPublicKey().getQ()));
 
         a.ModuloPolynomialConst(keyPair.getPublicKey().getP());
 

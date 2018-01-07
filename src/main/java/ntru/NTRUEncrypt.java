@@ -1,9 +1,6 @@
 package ntru;
 
-import java.io.UnsupportedEncodingException;
-import java.util.concurrent.ThreadLocalRandom;
-
-public class NTRUEncrypt 
+public class NTRUEncrypt
 {
 
 	private static NTRUEncrypt instance = null;
@@ -46,6 +43,7 @@ public class NTRUEncrypt
         Polynomial r = new Polynomial();
 
         //TODO: IMPORTANT! set small coefficients for R
+        r.setCoef(Polynomial.generateCoef());
         r.GenerateRandomPolynomial(publicKey.getQ()/2);
 
 

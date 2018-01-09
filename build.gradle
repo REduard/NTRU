@@ -17,4 +17,7 @@ dependencies {
     compile group: 'org.springframework', name: 'spring-aop', version: '5.0.1.RELEASE'
     compile group: 'org.aspectj', name: 'aspectjweaver', version: '1.8.12'
 
+    // https://mvnrepository.com/artifact/org.bouncycastle/bcprov-jdk15on
+    compile group: 'org.bouncycastle', name: 'bcprov-jdk15on', version: '1.59'
+
 }
